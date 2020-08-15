@@ -1,0 +1,14 @@
+
+<div class="row">
+  <ul>
+    <li *ngFor="let e of employees">{{e.name}}--{{e.surname}}--{{e.salary}}--{{e.positionName}}--{{e.hireDate}}--{{e.dateOfDissmisal}}</li>
+  </ul>
+</div>
+
+<!--<table mat-table [dataSource] ="employees">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let e">{{e.Name}}</td>
+  </ng-container>
+
+</table>-->
