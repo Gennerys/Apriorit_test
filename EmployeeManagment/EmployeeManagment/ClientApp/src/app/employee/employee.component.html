@@ -1,14 +1,49 @@
 
-<div class="row">
-  <ul>
-    <li *ngFor="let e of employees">{{e.name}}--{{e.surname}}--{{e.salary}}--{{e.positionName}}--{{e.hireDate}}--{{e.dateOfDissmisal}}</li>
-  </ul>
+<div class="spinner-container" *ngIf="dataSource.loading$ | async">
+  <mat-spinner></mat-spinner>
 </div>
 
-<!--<table mat-table [dataSource] ="employees">
+
+<button (click)="onCreate()">
+  Create
+</button>
+<mat-table [dataSource]="dataSource">
+
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let e">{{e.Name}}</td>
+    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *matCellDef="let employee">{{employee.name}}</mat-cell>
   </ng-container>
 
-</table>-->
+  <ng-container matColumnDef="surname">
+    <mat-header-cell *matHeaderCellDef>Surname</mat-header-cell>
+    <mat-cell *matCellDef="let employee">{{employee.surname}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="salary">
+    <mat-header-cell *matHeaderCellDef>Salary</mat-header-cell>
+    <mat-cell *matCellDef="let employee">{{employee.salary}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="positionName">
+    <mat-header-cell *matHeaderCellDef>Position Name</mat-header-cell>
+    <mat-cell *matCellDef="let employee">{{employee.positionName}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="hireDate">
+    <mat-header-cell *matHeaderCellDef>Hire Date</mat-header-cell>
+    <mat-cell *matCellDef="let employee">{{employee.hireDate | date:'shortDate'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dateOfDissmisal">
+    <mat-header-cell *matHeaderCellDef>Date Of Dissmisal</mat-header-cell>
+    <mat-cell *matCellDef="let employee">{{employee.dateOfDissmisal | date:'shortDate'}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<!--<mat-paginator [length]="course?.lessonsCount" [pageSize]="3"
+               [pageSizeOptions]="[3, 5, 10]"></mat-paginator>-->

@@ -34,6 +34,7 @@ namespace EmployeeManagment.Controllers
                     PositionName = _employeeRepository.GetCurrentPosition(e.Id).Position.PositionName,
                     DateOfDissmisal = _employeeRepository.GetCurrentPosition(e.Id).DateOfDissmisal,
                     HireDate = _employeeRepository.GetCurrentPosition(e.Id).HireDate
+      
 
                 }).ToList();
 
